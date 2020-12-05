@@ -1,22 +1,26 @@
 class Bank
-  attr_reader :my_money
-  attr_reader :bank_account
-  attr_accessor :deposit_mny
-  attr_accessor :specify_number
+  @select_var = ''
+  class << self
+    def selecter(select_m)
+      case select_m
+      when '0'
+        'ATM'
+      when '1'
+        'quit'
+      else
+        'nill'
+      end
+    end
 
-  def initialize
-    @bank_account = 100_000
-  end
+    def control
+      @select_var = gets.chomp
+      puts selecter(@select_var)
+    end
 
-  def deposit
-    self.bank_account += specify_number
-    self.my_money -= specify_number
-    puts "残高 #{@bunk_money}"
-  end
-
-  def withdrawal
-    self.my_money += specify_number
-    self.specify_number -= specify_number
-    puts "残高 #{@bunk_money}"
+    def display_select
+      puts 'menu_list 0 >> atm, 1 >> quit'
+      Bank.control
+    end
   end
 end
+Bank.display_select
